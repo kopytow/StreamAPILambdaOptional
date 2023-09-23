@@ -3,9 +3,6 @@ package org.producstar.homework.streamapi;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.stream.Stream;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
