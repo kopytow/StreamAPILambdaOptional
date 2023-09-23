@@ -1,17 +1,28 @@
+package org.producstar.homework.streamapi;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
-
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+        try {
+            // data.txt содержит строки вида (x1,y1)-(x2,y2)
+            Stream<String> lines = new BufferedReader(new FileReader("data.txt")).lines();
+            double maxSegmentLength = lines
+                    .map(LineSegment::length)
+                    .reduce((a,b)-> a > b ? a:b).orElse(0.0);
+            System.out.println("Максимальная длина " + maxSegmentLength);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
         }
+
     }
 }
